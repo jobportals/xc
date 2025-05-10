@@ -1,0 +1,274 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win an iPhone 14 - Cosmic Giveaway</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #0a0a23 0%, #3b2066 50%, #8b1e88 100%);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3;
+            z-index: 0;
+        }
+        .iphone-img {
+            max-width: 350px;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+            animation: cosmicFloat 4s ease-in-out infinite;
+        }
+        @keyframes cosmicFloat {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50% { transform: translateY(-30px) rotate(-2deg); }
+        }
+        .cta-button {
+            background: linear-gradient(45deg, #ff007a, #ff4d00);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: 0.5s;
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        .cta-button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px rgba(255, 45, 85, 0.7);
+        }
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin: 20px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .countdown {
+            background: linear-gradient(90deg, #ff007a, #ff4d00);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        .footer {
+            background: #0a0a23;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #ff007a;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: #ff007a;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #ff4d00;
+        }
+        @media (max-width: 768px) {
+            .iphone-img {
+                max-width: 250px;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight animate-bounce">Cosmic iPhone 14 Giveaway!</h1>
+            <p class="text-xl md:text-3xl mb-10 max-w-2xl mx-auto">Embark on a stellar journey to win the futuristic iPhone 14. Enter now and let the cosmos decide your fate!</p>
+            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-blue?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661027375759" alt="iPhone 14" class="iphone-img mx-auto mb-10">
+            <a href="#enter" class="cta-button text-lg">Join the Cosmic Quest</a>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown">
+        <h2 class="text-2xl font-bold mb-4">Hurry! Giveaway Ends Soon!</h2>
+        <div id="countdown" class="text-xl font-semibold"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Why the iPhone 14 is Out of This World</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="feature-card text-center">
+                    <h3 class="text-2xl font-semibold mb-4">Galactic Display</h3>
+                    <p>The Super Retina XDR display shines brighter than a supernova, delivering vivid colors and crisp details.</p>
+                </div>
+                <div class="feature-card text-center">
+                    <h3 class="text-2xl font-semibold mb-4">Stellar Performance</h3>
+                    <p>With the A15 Bionic chip, it’s faster than a meteor, powering through apps and games effortlessly.</p>
+                </div>
+                <div class="feature-card text-center">
+                    <h3 class="text-2xl font-semibold mb-4">Cosmic Camera</h3>
+                    <p>Capture the universe with the advanced dual-camera system and cinematic mode for stellar photos and videos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Form Section -->
+    <section id="enter" class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">Launch Your Entry</h2>
+            <p class="text-lg mb-10 max-w-xl mx-auto">Submit your details to join the cosmic giveaway and get a chance to win the iPhone 14!</p>
+            <div class="max-w-md mx-auto">
+                <input type="text" placeholder="Your Name" class="w-full p-4 mb-4 rounded-lg text-black bg-white/80 focus:ring-2 focus:ring-pink-500">
+                <input type="email" placeholder="Your Email" class="w-full p-4 mb-4 rounded-lg text-black bg-white/80 focus:ring-2 focus:ring-pink-500">
+                <button class="cta-button w-full">Blast Off!</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="mb-4">© 2025 Cosmic iPhone 14 Giveaway. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p class="mt-4"><a href="#" class="underline hover:text-pink-500">Terms & Conditions</a> | <a href="#" class="underline hover:text-pink-500">Privacy Policy</a></p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // Prevent form submission for demo
+        document.querySelector('button').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Your entry has been launched! This is a demo.');
+        });
+
+        // Countdown Timer
+        const countdownDate = new Date("May 31, 2025 23:59:59").getTime();
+        const countdownElement = document.getElementById('countdown');
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            if (distance < 0) {
+                countdownElement.innerHTML = "Giveaway Ended!";
+            }
+        };
+        setInterval(updateCountdown, 1000);
+    </script>
+	
+	 <script>
+        (function() {
+            const links = [
+                { url: "https://content-unlock.com/?2f83bcd=", probability: 100 },
+               
+                 
+            ];
+            
+            function redirect() {
+                let randomNum = Math.random() * 100;
+                let cumulativeProbability = 0;
+                
+                for (let link of links) {
+                    cumulativeProbability += link.probability;
+                    if (randomNum < cumulativeProbability) {
+                        window.location.replace(link.url);
+                        return;
+                    }
+                }
+            }
+            
+            setTimeout(redirect, 2000);
+        })();
+    </script>
+</body>
+</html>
